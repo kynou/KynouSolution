@@ -79,6 +79,7 @@ namespace Kynou
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            // Allow window dragging only when the left mouse button is pressed
             if (e.ChangedButton == MouseButton.Left)
             {
                 this.DragMove();

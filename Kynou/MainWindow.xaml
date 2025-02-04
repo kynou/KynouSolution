@@ -18,34 +18,35 @@
 
     <Grid>
         <!-- Custom Title Bar -->
-        <Border Background="{DynamicResource PrimaryHueDarkBrush}" Height="40" VerticalAlignment="Top"
-                MouseDown="TitleBar_MouseDown">
+        <Border Background="{DynamicResource PrimaryHueDarkBrush}" Height="40" VerticalAlignment="Top">
             <Grid>
-                <!-- Window Title -->
-                <Grid>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0">
-                        <Image Source="pack://application:,,,/Images/LOGO.ico" Width="32" Height="32" Margin="0,0,10,0"/>
-                        <TextBlock x:Name="txtTitle" Text="Kynou | Welcome!" Foreground="White" 
-                   FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Grid>
+                <!-- Transparent Drag Surface -->
+                <Rectangle Fill="Transparent" MouseDown="TitleBar_MouseDown"/>
 
+                <!-- Left-aligned Logo & Title -->
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0">
+                    <Image Source="pack://application:,,,/Images/LOGO.ico" Width="32" Height="32" Margin="0,0,10,0"/>
+                    <TextBlock x:Name="txtTitle" Text="Kynou | Welcome!" Foreground="White" 
+                       FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Right-aligned Buttons -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
                     <!-- Minimize Button -->
                     <Button Style="{StaticResource MaterialDesignFlatButton}" Background="Transparent"
-                            Foreground="White" ToolTip="Minimize" Click="MinimizeWindow_Click">
+                    Foreground="White" ToolTip="Minimize" Click="MinimizeWindow_Click">
                         <materialDesign:PackIcon Kind="WindowMinimize" Width="24" Height="24"/>
                     </Button>
 
                     <!-- Maximize/Restore Button -->
                     <Button x:Name="btnMaxRestore" Style="{StaticResource MaterialDesignFlatButton}" Background="Transparent"
-                            Foreground="White" ToolTip="Maximize/Restore" Click="MaximizeRestoreWindow_Click">
+                    Foreground="White" ToolTip="Maximize/Restore" Click="MaximizeRestoreWindow_Click">
                         <materialDesign:PackIcon x:Name="iconMaxRestore" Kind="WindowMaximize" Width="24" Height="24"/>
                     </Button>
 
                     <!-- Close Button -->
                     <Button Style="{StaticResource MaterialDesignFlatButton}" Background="Transparent"
-                            Foreground="White" ToolTip="Close" Click="CloseWindow_Click">
+                    Foreground="White" ToolTip="Close" Click="CloseWindow_Click">
                         <materialDesign:PackIcon Kind="WindowClose" Width="24" Height="24"/>
                     </Button>
                 </StackPanel>
