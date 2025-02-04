@@ -53,9 +53,12 @@
             </Grid>
         </Border>
 
-        <!-- Main Content -->
-        <Grid Margin="0,40,0,0">
-            <TextBlock Text="Main Content Goes Here" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Grid>
+        <DockPanel>
+            <!-- Main Content -->
+            
+            <Grid Margin="0,40,0,0" DockPanel.Dock="Right">
+                <TextBlock Text="Main Content Goes Here" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>
