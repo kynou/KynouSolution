@@ -22,21 +22,27 @@
                 MouseDown="TitleBar_MouseDown">
             <Grid>
                 <!-- Window Title -->
-                <TextBlock x:Name="txtTitle" Text="Kynou" Foreground="White" FontSize="16" VerticalAlignment="Center"
-                           Margin="10,0,0,0"/>
+                <TextBlock x:Name="txtTitle" Text="Kynou | Welcome!" Foreground="White" FontSize="16" FontWeight="Bold"
+                           VerticalAlignment="Center" Margin="10,0,0,0"/>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
                     <!-- Minimize Button -->
-                    <Button Content="🗕" Width="40" Height="40" Background="Transparent" Foreground="White"
-                            Click="MinimizeWindow_Click"/>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Background="Transparent"
+                            Foreground="White" ToolTip="Minimize" Click="MinimizeWindow_Click">
+                        <materialDesign:PackIcon Kind="WindowMinimize" Width="24" Height="24"/>
+                    </Button>
 
                     <!-- Maximize/Restore Button -->
-                    <Button x:Name="btnMaxRestore" Content="🗖" Width="40" Height="40" Background="Transparent" Foreground="White"
-                            Click="MaximizeRestoreWindow_Click"/>
+                    <Button x:Name="btnMaxRestore" Style="{StaticResource MaterialDesignFlatButton}" Background="Transparent"
+                            Foreground="White" ToolTip="Maximize/Restore" Click="MaximizeRestoreWindow_Click">
+                        <materialDesign:PackIcon x:Name="iconMaxRestore" Kind="WindowMaximize" Width="24" Height="24"/>
+                    </Button>
 
                     <!-- Close Button -->
-                    <Button Content="✖" Width="40" Height="40" Background="Transparent" Foreground="White"
-                            Click="CloseWindow_Click"/>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" Background="Transparent"
+                            Foreground="White" ToolTip="Close" Click="CloseWindow_Click">
+                        <materialDesign:PackIcon Kind="WindowClose" Width="24" Height="24"/>
+                    </Button>
                 </StackPanel>
             </Grid>
         </Border>
@@ -45,11 +51,5 @@
         <Grid Margin="0,40,0,0">
             <TextBlock Text="Main Content Goes Here" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
-
-        <!-- Resize Borders (Invisible but Functional) -->
-        <Border BorderBrush="Transparent" BorderThickness="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="5" Cursor="SizeNS"/>
-        <Border BorderBrush="Transparent" BorderThickness="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="5" Cursor="SizeNS"/>
-        <Border BorderBrush="Transparent" BorderThickness="5" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="5" Cursor="SizeWE"/>
-        <Border BorderBrush="Transparent" BorderThickness="5" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="5" Cursor="SizeWE"/>
     </Grid>
 </Window>

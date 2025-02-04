@@ -2,6 +2,7 @@
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
+using MaterialDesignThemes.Wpf;
 
 namespace Kynou
 {
@@ -65,9 +66,9 @@ namespace Kynou
 
         private void UpdateMaximizeRestoreButton()
         {
-            if (btnMaxRestore != null)
+            if (iconMaxRestore != null)
             {
-                btnMaxRestore.Content = this.WindowState == WindowState.Maximized ? "🗗" : "🗖";
+                iconMaxRestore.Kind = this.WindowState == WindowState.Maximized ? PackIconKind.WindowRestore : PackIconKind.WindowMaximize;
             }
         }
 
