@@ -33,41 +33,40 @@
 
     <Grid>
         <DockPanel>
-            <!-- Custom Title Bar -->
             <Border Background="{DynamicResource PrimaryHueDarkBrush}"
                     Height="40"
                     VerticalAlignment="Top"
                     DockPanel.Dock="Top">
                 <Grid>
                     <Rectangle Fill="Transparent"
-                            MouseDown="TitleBar_MouseDown"/>
+                               MouseDown="TitleBar_MouseDown"/>
                     <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            Margin="10,0,0,0">
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="10,0,0,0">
                         <Image Source="pack://application:,,,/Images/LOGO.ico"
-                                Width="32"
-                                Height="32"
-                                Margin="0,0,10,0"/>
+                               Width="32"
+                               Height="32"
+                               Margin="0,0,10,0"/>
                         <TextBlock x:Name="txtTitle"
-                                Text="Kynou | Welcome!"
-                                Foreground="White"
-                                FontSize="16"
-                                FontWeight="Bold"
-                                VerticalAlignment="Center"/>
+                                   Text="Kynou | Welcome!"
+                                   Foreground="White"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Right"
-                            Margin="0,0,10,0">
+                                HorizontalAlignment="Right"
+                                Margin="0,0,10,0">
                         <Button Style="{StaticResource MaterialDesignFlatButton}"
                                 Background="Transparent"
                                 Foreground="White"
                                 ToolTip="Minimize"
                                 Click="MinimizeWindow_Click">
                             <materialDesign:PackIcon Kind="WindowMinimize"
-                                    Width="24"
-                                    Height="24"/>
+                                                    Width="24"
+                                                    Height="24"/>
                         </Button>
                         <Button x:Name="btnMaxRestore"
                                 Style="{StaticResource MaterialDesignFlatButton}"
@@ -76,9 +75,9 @@
                                 ToolTip="Maximize/Restore"
                                 Click="MaximizeRestoreWindow_Click">
                             <materialDesign:PackIcon x:Name="iconMaxRestore"
-                                    Kind="WindowMaximize"
-                                    Width="24"
-                                    Height="24"/>
+                                                    Kind="WindowMaximize"
+                                                    Width="24"
+                                                    Height="24"/>
                         </Button>
                         <Button Style="{StaticResource MaterialDesignFlatButton}"
                                 Background="Transparent"
@@ -86,100 +85,114 @@
                                 ToolTip="Close"
                                 Click="CloseWindow_Click">
                             <materialDesign:PackIcon Kind="WindowClose"
-                                    Width="24"
-                                    Height="24"/>
+                                                    Width="24"
+                                                    Height="24"/>
                         </Button>
                     </StackPanel>
                 </Grid>
             </Border>
 
-            <!-- Navigation Rail -->
             <StackPanel Orientation="Horizontal"
-                    DockPanel.Dock="Left">
-                <Grid Width="80"
-                        Background="#25232A">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
+                        DockPanel.Dock="Left"
+                        Margin="10,10,0,10">
+                <Border Background="#25232A"
+                        CornerRadius="10">
+                    <Grid Width="80">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                    <ListBox Grid.Row="1"
-                            VerticalAlignment="Top"
-                            Foreground="#E8DEF8"
-                            SelectedIndex="0"
-                            SelectionChanged="OnTabSelectionChanged">
-                        <ListBoxItem Tag="Home">
-                            <ListBoxItem.Style>
-                                <Style TargetType="ListBoxItem"
-                                        BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
-                                    <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon"
-                                            Value="Home"/>
-                                    <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon"
-                                            Value="HomeOutline"/>
-                                </Style>
-                            </ListBoxItem.Style>
-                            <TextBlock Text="Home"/>
-                        </ListBoxItem>
+                        <ListBox Grid.Row="1"
+                                 VerticalAlignment="Top"
+                                 Foreground="#E8DEF8"
+                                 SelectedIndex="0"
+                                 SelectionChanged="OnTabSelectionChanged"
+                                 BorderThickness="0"
+                                 ItemContainerStyle="{StaticResource MaterialDesign3.NavigationRailListBoxItem}">
+                            <ListBoxItem Tag="Home">
+                                <ListBoxItem.Style>
+                                    <Style TargetType="ListBoxItem"
+                                           BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
+                                        <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon"
+                                                Value="Home"/>
+                                        <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon"
+                                                Value="HomeOutline"/>
+                                    </Style>
+                                </ListBoxItem.Style>
+                                <TextBlock Text="Home"/>
+                            </ListBoxItem>
 
-                        <ListBoxItem Tag="Chats">
-                            <ListBoxItem.Style>
-                                <Style TargetType="ListBoxItem"
-                                        BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
-                                    <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon"
-                                            Value="Chat"/>
-                                    <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon"
-                                            Value="ChatOutline"/>
-                                </Style>
-                            </ListBoxItem.Style>
-                            <TextBlock Text="Chats"/>
-                        </ListBoxItem>
+                            <ListBoxItem Tag="Chats">
+                                <ListBoxItem.Style>
+                                    <Style TargetType="ListBoxItem"
+                                           BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
+                                        <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon"
+                                                Value="Chat"/>
+                                        <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon"
+                                                Value="ChatOutline"/>
+                                    </Style>
+                                </ListBoxItem.Style>
+                                <TextBlock Text="Chats"/>
+                            </ListBoxItem>
 
-                        <ListBoxItem Tag="Models">
-                            <ListBoxItem.Style>
-                                <Style TargetType="ListBoxItem"
-                                        BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
-                                    <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon"
-                                            Value="Cube"/>
-                                    <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon"
-                                            Value="CubeOutline"/>
-                                </Style>
-                            </ListBoxItem.Style>
-                            <TextBlock Text="Models"/>
-                        </ListBoxItem>
+                            <ListBoxItem Tag="Models">
+                                <ListBoxItem.Style>
+                                    <Style TargetType="ListBoxItem"
+                                           BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
+                                        <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon"
+                                                Value="Cube"/>
+                                        <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon"
+                                                Value="CubeOutline"/>
+                                    </Style>
+                                </ListBoxItem.Style>
+                                <TextBlock Text="Models"/>
+                            </ListBoxItem>
 
-                        <ListBoxItem Tag="LocalDocs">
-                            <ListBoxItem.Style>
-                                <Style TargetType="ListBoxItem"
-                                        BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
-                                    <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon"
-                                            Value="Database"/>
-                                    <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon"
-                                            Value="DatabaseOutline"/>
-                                </Style>
-                            </ListBoxItem.Style>
-                            <TextBlock Text="LocalDocs"/>
-                        </ListBoxItem>
+                            <ListBoxItem Tag="LocalDocs">
+                                <ListBoxItem.Style>
+                                    <Style TargetType="ListBoxItem"
+                                           BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
+                                        <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon"
+                                                Value="Database"/>
+                                        <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon"
+                                                Value="DatabaseOutline"/>
+                                    </Style>
+                                </ListBoxItem.Style>
+                                <TextBlock Text="LocalDocs"/>
+                            </ListBoxItem>
 
-                        <ListBoxItem Tag="Settings">
-                            <ListBoxItem.Style>
-                                <Style TargetType="ListBoxItem"
-                                        BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
-                                    <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon"
-                                            Value="Cog"/>
-                                    <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon"
-                                            Value="CogOutline"/>
-                                </Style>
-                            </ListBoxItem.Style>
-                            <TextBlock Text="Settings"/>
-                        </ListBoxItem>
-                    </ListBox>
-                </Grid>
+                            <ListBoxItem Tag="Settings">
+                                <ListBoxItem.Style>
+                                    <Style TargetType="ListBoxItem"
+                                           BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
+                                        <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon"
+                                                Value="Cog"/>
+                                        <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon"
+                                                Value="CogOutline"/>
+                                    </Style>
+                                </ListBoxItem.Style>
+                                <TextBlock Text="Settings"/>
+                            </ListBoxItem>
+                        </ListBox>
+                    </Grid>
+                </Border>
             </StackPanel>
 
-            <!-- Main Content Area Wrapped in MaterialDesign Card -->
-            <Grid Margin="0,40,0,0"
-                    DockPanel.Dock="Right">
+            <Grid Margin="10,50,10,10"
+                  DockPanel.Dock="Right">
                 <materialDesign:Card Padding="20">
+                    <materialDesign:Card.Template>
+                        <ControlTemplate TargetType="materialDesign:Card">
+                            <Border Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    CornerRadius="10">
+                                <ContentPresenter Content="{TemplateBinding Content}"
+                                                  Margin="{TemplateBinding Padding}"/>
+                            </Border>
+                        </ControlTemplate>
+                    </materialDesign:Card.Template>
                     <ContentControl x:Name="MainContentControl"/>
                 </materialDesign:Card>
             </Grid>

@@ -106,6 +106,7 @@ namespace Kynou
         private void DoubleClickTitleBar()
         {
             WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+            UpdateMaximizeRestoreButton();
         }
 
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
