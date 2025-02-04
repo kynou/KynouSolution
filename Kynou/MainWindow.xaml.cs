@@ -77,8 +77,49 @@ namespace Kynou
             this.Close();
         }
 
+        private DateTime? lastTitleBarClick = null;
+
+        private int doubleClickInterval = 300;
+
+        private bool IsTitleDoubleClick()
+        {
+            if (lastTitleBarClick == null)
+            {
+                lastTitleBarClick = DateTime.Now;
+                return false;
+            }
+
+            var now = DateTime.Now;
+
+            var delta = now - lastTitleBarClick;
+
+            var r = delta != null && delta.Value.TotalMilliseconds <= doubleClickInterval;
+
+            lastTitleBarClick = DateTime.Now;
+
+            return r;
+        }
+
+        private void DoubleClickTitleBar()
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+        }
+
         private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (IsTitleDoubleClick())
+            {
+                DoubleClickTitleBar();
+                return;
+            }
+
             // Allow window dragging only when the left mouse button is pressed
             if (e.ChangedButton == MouseButton.Left)
             {
