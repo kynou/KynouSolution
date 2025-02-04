@@ -1,6 +1,7 @@
 ﻿using Kynou.Helpers;
 using System.Text;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Kynou
 {
@@ -22,7 +23,7 @@ namespace Kynou
             WindowState = WindowState.Maximized;
         }
 
-        private void SetTitle(string msg,bool? includeTimestamp = false)
+        private void SetTitle(string msg, bool? includeTimestamp = false)
         {
             var sb = new StringBuilder();
 
@@ -40,7 +41,26 @@ namespace Kynou
             this.Dispatcher.Invoke(() =>
             {
                 Title = sb.ToString();
+                txtTitle.Text = sb.ToString(); // Update custom title bar text
             });
+        }
+
+        private void MinimizeWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+
+        private void CloseWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void TitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
         }
     }
 }
