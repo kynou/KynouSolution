@@ -5,59 +5,172 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kynou"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:smtx="clr-namespace:ShowMeTheXAML;assembly=ShowMeTheXAML"
         Style="{StaticResource MaterialDesignWindow}"
         mc:Ignorable="d"
         Title="Kynou"
-        Height="450" Width="800"
+        Height="450"
+        Width="800"
         WindowStyle="None"
         ResizeMode="CanResize">
 
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" CornerRadius="5" GlassFrameThickness="0" ResizeBorderThickness="5"/>
+        <WindowChrome CaptionHeight="0"
+                CornerRadius="5"
+                GlassFrameThickness="0"
+                ResizeBorderThickness="5"/>
     </WindowChrome.WindowChrome>
 
+    <Window.Resources>
+        <Style x:Key="CustomColorMaterialDesign3NavigationListBoxItem"
+               TargetType="ListBoxItem"
+               BasedOn="{StaticResource MaterialDesign3.NavigationRailListBoxItem}">
+            <Setter Property="Background"
+                    Value="#4A4458"/>
+            <Setter Property="Foreground"
+                    Value="#E8DEF8"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
-        <!-- Custom Title Bar -->
-        <Border Background="{DynamicResource PrimaryHueDarkBrush}" Height="40" VerticalAlignment="Top">
-            <Grid>
-                <!-- Transparent Drag Surface -->
-                <Rectangle Fill="Transparent" MouseDown="TitleBar_MouseDown"/>
-
-                <!-- Left-aligned Logo & Title -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0">
-                    <Image Source="pack://application:,,,/Images/LOGO.ico" Width="32" Height="32" Margin="0,0,10,0"/>
-                    <TextBlock x:Name="txtTitle" Text="Kynou | Welcome!" Foreground="White" 
-                       FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
-                </StackPanel>
-
-                <!-- Right-aligned Buttons -->
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                    <!-- Minimize Button -->
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" Background="Transparent"
-                    Foreground="White" ToolTip="Minimize" Click="MinimizeWindow_Click">
-                        <materialDesign:PackIcon Kind="WindowMinimize" Width="24" Height="24"/>
-                    </Button>
-
-                    <!-- Maximize/Restore Button -->
-                    <Button x:Name="btnMaxRestore" Style="{StaticResource MaterialDesignFlatButton}" Background="Transparent"
-                    Foreground="White" ToolTip="Maximize/Restore" Click="MaximizeRestoreWindow_Click">
-                        <materialDesign:PackIcon x:Name="iconMaxRestore" Kind="WindowMaximize" Width="24" Height="24"/>
-                    </Button>
-
-                    <!-- Close Button -->
-                    <Button Style="{StaticResource MaterialDesignFlatButton}" Background="Transparent"
-                    Foreground="White" ToolTip="Close" Click="CloseWindow_Click">
-                        <materialDesign:PackIcon Kind="WindowClose" Width="24" Height="24"/>
-                    </Button>
-                </StackPanel>
-            </Grid>
-        </Border>
-
         <DockPanel>
+            <!-- Custom Title Bar -->
+            <Border Background="{DynamicResource PrimaryHueDarkBrush}"
+                    Height="40"
+                    VerticalAlignment="Top"
+                    DockPanel.Dock="Top">
+                <Grid>
+                    <!-- Transparent Drag Surface -->
+                    <Rectangle Fill="Transparent"
+                            MouseDown="TitleBar_MouseDown"/>
+
+                    <!-- Left-aligned Logo & Title -->
+                    <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="10,0,0,0">
+                        <Image Source="pack://application:,,,/Images/LOGO.ico"
+                                Width="32"
+                                Height="32"
+                                Margin="0,0,10,0"/>
+                        <TextBlock x:Name="txtTitle"
+                                Text="Kynou | Welcome!"
+                                Foreground="White"
+                                   FontSize="16"
+                                FontWeight="Bold"
+                                VerticalAlignment="Center"/>
+                    </StackPanel>
+
+                    <!-- Right-aligned Buttons -->
+                    <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            Margin="0,0,10,0">
+                        <!-- Minimize Button -->
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Background="Transparent"
+                                Foreground="White"
+                                ToolTip="Minimize"
+                                Click="MinimizeWindow_Click">
+                            <materialDesign:PackIcon Kind="WindowMinimize"
+                                    Width="24"
+                                    Height="24"/>
+                        </Button>
+
+                        <!-- Maximize/Restore Button -->
+                        <Button x:Name="btnMaxRestore"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                Background="Transparent"
+                                Foreground="White"
+                                ToolTip="Maximize/Restore"
+                                Click="MaximizeRestoreWindow_Click">
+                            <materialDesign:PackIcon x:Name="iconMaxRestore"
+                                    Kind="WindowMaximize"
+                                    Width="24"
+                                    Height="24"/>
+                        </Button>
+
+                        <!-- Close Button -->
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                Background="Transparent"
+                                Foreground="White"
+                                ToolTip="Close"
+                                Click="CloseWindow_Click">
+                            <materialDesign:PackIcon Kind="WindowClose"
+                                    Width="24"
+                                    Height="24"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- Navigation Rail -->
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                <Grid Width="80" Background="#25232A">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <ListBox Grid.Row="1" VerticalAlignment="Top" Foreground="#E8DEF8" SelectedIndex="0">
+                        <ListBoxItem>
+                            <ListBoxItem.Style>
+                                <Style TargetType="ListBoxItem" BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
+                                    <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon" Value="Home"/>
+                                    <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon" Value="HomeOutline"/>
+                                </Style>
+                            </ListBoxItem.Style>
+                            <TextBlock Text="Home"/>
+                        </ListBoxItem>
+
+                        <ListBoxItem>
+                            <ListBoxItem.Style>
+                                <Style TargetType="ListBoxItem" BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
+                                    <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon" Value="Chat"/>
+                                    <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon" Value="ChatOutline"/>
+                                </Style>
+                            </ListBoxItem.Style>
+                            <TextBlock Text="Chats"/>
+                        </ListBoxItem>
+
+                        <ListBoxItem>
+                            <ListBoxItem.Style>
+                                <Style TargetType="ListBoxItem" BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
+                                    <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon" Value="Cube"/>
+                                    <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon" Value="CubeOutline"/>
+                                </Style>
+                            </ListBoxItem.Style>
+                            <TextBlock Text="Models"/>
+                        </ListBoxItem>
+
+                        <ListBoxItem>
+                            <ListBoxItem.Style>
+                                <Style TargetType="ListBoxItem" BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
+                                    <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon" Value="Database"/>
+                                    <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon" Value="DatabaseOutline"/>
+                                </Style>
+                            </ListBoxItem.Style>
+                            <TextBlock Text="LocalDocs"/>
+                        </ListBoxItem>
+
+                        <ListBoxItem>
+                            <ListBoxItem.Style>
+                                <Style TargetType="ListBoxItem" BasedOn="{StaticResource CustomColorMaterialDesign3NavigationListBoxItem}">
+                                    <Setter Property="materialDesign:NavigationRailAssist.SelectedIcon" Value="Cog"/>
+                                    <Setter Property="materialDesign:NavigationRailAssist.UnselectedIcon" Value="CogOutline"/>
+                                </Style>
+                            </ListBoxItem.Style>
+                            <TextBlock Text="Settings"/>
+                        </ListBoxItem>
+                    </ListBox>
+                </Grid>
+            </StackPanel>
+
             <!-- Main Content -->
-            
-            <Grid Margin="0,40,0,0" DockPanel.Dock="Right">
-                <TextBlock Text="Main Content Goes Here" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <Grid Margin="0,40,0,0"
+                    DockPanel.Dock="Right">
+                <TextBlock Text="Main Content Goes Here"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"/>
             </Grid>
         </DockPanel>
     </Grid>
