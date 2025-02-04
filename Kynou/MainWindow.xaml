@@ -10,15 +10,8 @@
         Title="Kynou"
         Height="450"
         Width="800"
-        WindowStyle="None"
+        WindowStyle="SingleBorderWindow"
         ResizeMode="CanResize">
-
-    <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0"
-                      CornerRadius="5"
-                      GlassFrameThickness="0"
-                      ResizeBorderThickness="5"/>
-    </WindowChrome.WindowChrome>
 
     <Window.Resources>
         <Style x:Key="CustomColorMaterialDesign3NavigationListBoxItem"
@@ -33,65 +26,6 @@
 
     <Grid>
         <DockPanel>
-            <Border Background="{DynamicResource PrimaryHueDarkBrush}"
-                    Height="40"
-                    VerticalAlignment="Top"
-                    DockPanel.Dock="Top">
-                <Grid>
-                    <Rectangle Fill="Transparent"
-                               MouseDown="TitleBar_MouseDown"/>
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Left"
-                                VerticalAlignment="Center"
-                                Margin="10,0,0,0">
-                        <Image Source="pack://application:,,,/Images/LOGO.ico"
-                               Width="32"
-                               Height="32"
-                               Margin="0,0,10,0"/>
-                        <TextBlock x:Name="txtTitle"
-                                   Text="Kynou | Welcome!"
-                                   Foreground="White"
-                                   FontSize="16"
-                                   FontWeight="Bold"
-                                   VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    <StackPanel Orientation="Horizontal"
-                                HorizontalAlignment="Right"
-                                Margin="0,0,10,0">
-                        <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                Background="Transparent"
-                                Foreground="White"
-                                ToolTip="Minimize"
-                                Click="MinimizeWindow_Click">
-                            <materialDesign:PackIcon Kind="WindowMinimize"
-                                                    Width="24"
-                                                    Height="24"/>
-                        </Button>
-                        <Button x:Name="btnMaxRestore"
-                                Style="{StaticResource MaterialDesignFlatButton}"
-                                Background="Transparent"
-                                Foreground="White"
-                                ToolTip="Maximize/Restore"
-                                Click="MaximizeRestoreWindow_Click">
-                            <materialDesign:PackIcon x:Name="iconMaxRestore"
-                                                    Kind="WindowMaximize"
-                                                    Width="24"
-                                                    Height="24"/>
-                        </Button>
-                        <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                Background="Transparent"
-                                Foreground="White"
-                                ToolTip="Close"
-                                Click="CloseWindow_Click">
-                            <materialDesign:PackIcon Kind="WindowClose"
-                                                    Width="24"
-                                                    Height="24"/>
-                        </Button>
-                    </StackPanel>
-                </Grid>
-            </Border>
-
             <StackPanel Orientation="Horizontal"
                         DockPanel.Dock="Left"
                         Margin="10,10,0,10">
@@ -102,7 +36,6 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-
                         <ListBox Grid.Row="1"
                                  VerticalAlignment="Top"
                                  Foreground="#E8DEF8"
@@ -122,7 +55,6 @@
                                 </ListBoxItem.Style>
                                 <TextBlock Text="Home"/>
                             </ListBoxItem>
-
                             <ListBoxItem Tag="Chats">
                                 <ListBoxItem.Style>
                                     <Style TargetType="ListBoxItem"
@@ -135,7 +67,6 @@
                                 </ListBoxItem.Style>
                                 <TextBlock Text="Chats"/>
                             </ListBoxItem>
-
                             <ListBoxItem Tag="Models">
                                 <ListBoxItem.Style>
                                     <Style TargetType="ListBoxItem"
@@ -148,7 +79,6 @@
                                 </ListBoxItem.Style>
                                 <TextBlock Text="Models"/>
                             </ListBoxItem>
-
                             <ListBoxItem Tag="LocalDocs">
                                 <ListBoxItem.Style>
                                     <Style TargetType="ListBoxItem"
@@ -161,7 +91,6 @@
                                 </ListBoxItem.Style>
                                 <TextBlock Text="LocalDocs"/>
                             </ListBoxItem>
-
                             <ListBoxItem Tag="Settings">
                                 <ListBoxItem.Style>
                                     <Style TargetType="ListBoxItem"
@@ -178,7 +107,6 @@
                     </Grid>
                 </Border>
             </StackPanel>
-
             <Grid Margin="10,50,10,10"
                   DockPanel.Dock="Right">
                 <materialDesign:Card Padding="20">
