@@ -21,6 +21,7 @@ namespace Kynou
             WindowStartupLocation = WindowStartupLocation.CenterScreen;
 
             WindowState = WindowState.Maximized;
+            UpdateMaximizeRestoreButton();
         }
 
         private void SetTitle(string msg, bool? includeTimestamp = false)
@@ -28,13 +29,11 @@ namespace Kynou
             var sb = new StringBuilder();
 
             sb.Append(WINDOW_TITLE);
-
             sb.Append(msg);
 
             if (includeTimestamp == true)
             {
                 string newTimestamp = StringHelper.GenerateTimestamp();
-
                 sb.Append(newTimestamp);
             }
 
@@ -48,6 +47,28 @@ namespace Kynou
         private void MinimizeWindow_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void MaximizeRestoreWindow_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+
+            UpdateMaximizeRestoreButton();
+        }
+
+        private void UpdateMaximizeRestoreButton()
+        {
+            if (btnMaxRestore != null)
+            {
+                btnMaxRestore.Content = this.WindowState == WindowState.Maximized ? "🗗" : "🗖";
+            }
         }
 
         private void CloseWindow_Click(object sender, RoutedEventArgs e)

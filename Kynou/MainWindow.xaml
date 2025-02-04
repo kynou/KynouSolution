@@ -9,10 +9,11 @@
         mc:Ignorable="d"
         Title="Kynou"
         Height="450" Width="800"
-        WindowStyle="None">
+        WindowStyle="None"
+        ResizeMode="CanResize">
 
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="0" CornerRadius="0" GlassFrameThickness="0"/>
+        <WindowChrome CaptionHeight="0" CornerRadius="5" GlassFrameThickness="0" ResizeBorderThickness="5"/>
     </WindowChrome.WindowChrome>
 
     <Grid>
@@ -29,6 +30,10 @@
                     <Button Content="🗕" Width="40" Height="40" Background="Transparent" Foreground="White"
                             Click="MinimizeWindow_Click"/>
 
+                    <!-- Maximize/Restore Button -->
+                    <Button x:Name="btnMaxRestore" Content="🗖" Width="40" Height="40" Background="Transparent" Foreground="White"
+                            Click="MaximizeRestoreWindow_Click"/>
+
                     <!-- Close Button -->
                     <Button Content="✖" Width="40" Height="40" Background="Transparent" Foreground="White"
                             Click="CloseWindow_Click"/>
@@ -40,5 +45,11 @@
         <Grid Margin="0,40,0,0">
             <TextBlock Text="Main Content Goes Here" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Grid>
+
+        <!-- Resize Borders (Invisible but Functional) -->
+        <Border BorderBrush="Transparent" BorderThickness="5" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="5" Cursor="SizeNS"/>
+        <Border BorderBrush="Transparent" BorderThickness="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Height="5" Cursor="SizeNS"/>
+        <Border BorderBrush="Transparent" BorderThickness="5" VerticalAlignment="Stretch" HorizontalAlignment="Left" Width="5" Cursor="SizeWE"/>
+        <Border BorderBrush="Transparent" BorderThickness="5" VerticalAlignment="Stretch" HorizontalAlignment="Right" Width="5" Cursor="SizeWE"/>
     </Grid>
 </Window>
